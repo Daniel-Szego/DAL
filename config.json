@@ -1,0 +1,6 @@
+{
+    "peer_name": "peer0",
+    "channelid": "prodchannel",
+    "use_couchdb":false,
+    "create_history_log":false
+}

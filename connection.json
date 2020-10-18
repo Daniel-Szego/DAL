@@ -1,0 +1,72 @@
+{
+    "name": "venprod-network",
+    "version": "1.0.0",
+    "client": {
+        "organization": "org",
+        "connection": {
+            "timeout": {
+                "peer": {
+                    "endorser": "6000"
+                }
+            }
+        }
+    },
+    "organizations": {
+        "org": {
+            "mspid": "orgMSP",
+            "peers": [
+                "peer0",
+                "peer1"
+            ],
+            "certificateAuthorities": [
+                "ca-0"
+            ]
+        }
+    },
+    "certificateAuthorities": {
+       "ca": {
+           "url": "https://ca-0:7054",
+           "caName": "ca-0",
+           "tlsCACerts": {
+              "path": "/tmp/crypto/fabric-ca/org/tls-cert.pem"
+          },
+          "httpOptions": {
+               "verify": false
+             }
+         }
+    },
+    "peers": {
+        "peer0": {
+            "url": "grpcs://peer0:7051",
+            "tlsCACerts": {
+              "path": "/tmp/crypto/peerOrganizations/org.prod.ven.hu/peers/peer0.org.prod.ven.hu/tls/tlscacerts/tls-ca-0-31054.pem"
+            },
+            "grpcOptions": {
+                "ssl-target-name-override": "peer0",
+                "hostnameOverride": "peer0"
+            }
+        },
+        "peer1": {
+            "url": "grpcs://peer1:7051",
+            "tlsCACerts": {
+              "path": "/tmp/crypto/peerOrganizations/org.prod.ven.hu/peers/peer1.org.prod.ven.hu/tls/tlscacerts/tls-ca-0-31054.pem"
+            },
+            "grpcOptions": {
+                "ssl-target-name-override": "peer1",
+                "hostnameOverride": "peer1"
+            }
+        }
+    },
+    "orderers": {
+        "orderer": {
+          "url": "grpcs://orderer:7050",
+          "tlsCACerts": {
+            "path": "/tmp/crypto/ordererOrganizations/prod.ven.hu/orderers/orderer.prod.ven.hu/tls/tlscacerts/tls-ca-0-31054.pem"
+            },
+          "grpcOptions": {
+            "ssl-target-name-override": "orderer",
+            "hostnameOverride": "orderer"
+        }
+      }  
+    }
+}
